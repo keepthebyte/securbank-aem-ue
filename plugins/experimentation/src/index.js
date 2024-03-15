@@ -75,27 +75,26 @@ export async function getResolvedAudiences(applicableAudiences, options, context
 /**
  * Replaces element with content from path
  * @param {string} path
- * @param {HTMLElement} element
+ * @param {HTMLElement} main
  * @return Returns the path that was loaded or null if the loading failed
  */
-async function replaceInner(path, element) {
-  const plainPath = path.endsWith('/')
-    ? `${path}index.plain.html`
-    : `${path}.plain.html`;
+async function replaceInner(path, main) {
+  path = path.endsWith('/') ? `${path}index.html` : `${path}.html`;
   try {
-    const resp = await fetch(plainPath);
+    const resp = await fetch(path);
     if (!resp.ok) {
       // eslint-disable-next-line no-console
       console.log('error loading content:', resp);
       return false;
     }
     const html = await resp.text();
+    const dom = new DOMParser().parseFromString(html, 'text/html');
     // eslint-disable-next-line no-param-reassign
-    element.innerHTML = html;
-    return plainPath;
+    main.replaceWith(dom.querySelector('main'));
+    return path;
   } catch (e) {
     // eslint-disable-next-line no-console
-    console.log(`error loading content: ${plainPath}`, e);
+    console.log(`error loading content: ${path}`, e);
   }
   return null;
 }
