@@ -79,7 +79,6 @@ export async function getResolvedAudiences(applicableAudiences, options, context
  * @return Returns the path that was loaded or null if the loading failed
  */
 async function replaceInner(path, main) {
-  path = path.endsWith('/') ? `${path}index.html` : `${path}.html`;
   try {
     const resp = await fetch(path);
     if (!resp.ok) {
