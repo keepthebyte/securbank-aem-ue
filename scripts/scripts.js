@@ -131,10 +131,6 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  document.documentElement.lang = 'en';
-  decorateTemplateAndTheme();
-  const main = doc.querySelector('main');
-
   if (window.top === window.self) {
     // only consider experimentation when not in an iframe
     if (getMetadata('experiment')
@@ -146,6 +142,9 @@ async function loadEager(doc) {
     }
   }
 
+  document.documentElement.lang = 'en';
+  decorateTemplateAndTheme();
+  const main = doc.querySelector('main');
 
   if (main) {
     decorateMain(main);
