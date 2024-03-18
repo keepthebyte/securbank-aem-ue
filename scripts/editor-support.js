@@ -112,5 +112,5 @@ Object.keys(metasValue).forEach((key) => {
   const metaEntry = document.createElement('meta');
   metaEntry.name = key;
   metaEntry.content = metasValue[key];
-  head.appendChild(metaEntry);
+  document.head.appendChild(metaEntry);
 });
