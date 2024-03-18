@@ -103,3 +103,14 @@ function attachEventListners(main) {
 }
 
 attachEventListners(document.querySelector('main'));
+
+const metasValue = {
+  'urn:adobe:aue:config:extensions': 'https://1613036-934experimentation.adobeio-static.net/index.html'
+};
+
+Object.keys(metasValue).forEach((key) => {
+  const metaEntry = document.createElement('meta');
+  metaEntry.name = key;
+  metaEntry.content = metasValue[key];
+  head.appendChild(metaEntry);
+});
