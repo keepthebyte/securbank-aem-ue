@@ -271,9 +271,7 @@ function attachEventListners(main) {
         event.stopPropagation();
         const applied = await applyChanges(event);
         if (!applied) window.location.reload();
-      }),
-  );
-
+      }));
   main.addEventListener('extension:reloadPage', handleReloadPage);
 }
 
