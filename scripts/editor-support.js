@@ -89,7 +89,10 @@ async function applyChanges(event) {
 }
 
 function handleReloadPage(event) {
-  window.location.href = event.detail;
+  const a = document.createElement('a');
+  a.setAttribute('href', event.detail);
+  event.target.append(a);
+  a.click();
 }
 
 function attachEventListners(main) {
