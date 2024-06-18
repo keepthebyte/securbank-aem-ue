@@ -19,6 +19,10 @@
   display: block;
 }
 
+.account-cards img {
+  border-radius: 40px;
+}
+
 @media (width >= 900px) {
   .columns > div {
     flex-direction: unset;
